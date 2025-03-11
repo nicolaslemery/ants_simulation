@@ -1,0 +1,10 @@
+#config.py
+
+NUM_ANTS = 20
+GRID_WIDTH = 10
+GRID_HEIGHT = 10
+
+STEPS = 50  #run.py only
+
+FOOD_COUNT = 15
+FOOD_STACK_SIZE = 5
