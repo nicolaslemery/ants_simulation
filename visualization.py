@@ -60,7 +60,7 @@ def agent_portrayal(agent):
     return None 
 
 #TODO: remplacer cette fonction par un dico
-def get_pheromone_color(value, max_value=10):
+def get_pheromone_color(value, max_value=1):
     """Convertit une concentration de phéromones en couleur entre jaune et rouge."""
     value = min(value, max_value)  # ✅ Évite de dépasser la concentration maximale
     intensity = int((value / max_value) * 255)  # ✅ Convertit en échelle de 0 à 255

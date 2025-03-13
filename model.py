@@ -7,7 +7,7 @@ from ants.config import FOOD_COUNT,FOOD_STACK_SIZE
 import random
 
 class AntColonyModel(Model):
-    def __init__(self, N, width, height, food_count = FOOD_COUNT, stack_size = STACK_SIZE, nest_position = [1,1]):
+    def __init__(self, N, width, height, food_count = FOOD_COUNT, stack_size = FOOD_STACK_SIZE, nest_position = [1,1]):
         super().__init__()
 
         self.num_agents = N
@@ -22,7 +22,6 @@ class AntColonyModel(Model):
             for y in range(height):
                 # Vérifie si un PheromoneAgent existe déjà (dans la grille et dans le dictionnaire)
                 if (x, y) not in self.pheromone_agents :
-                    
                     pheromone_agent = PheromoneAgent(f"pheromone_{x}_{y}", self)
                     self.grid.place_agent(pheromone_agent, (x, y))
                     self.schedule.add(pheromone_agent)
@@ -61,9 +60,8 @@ class AntColonyModel(Model):
     def evaporate_pheromones(self):
         for x in range(self.grid.width):
             for y in range(self.grid.height):
-                # ✅ Réduction de la concentration des phéromones
+
                 self.pheromone_grid[x][y] *= 0.95
 
-                # ✅ Mise à jour de l'agent PheromoneAgent associé
                 if (x, y) in self.pheromone_agents:
                     self.pheromone_agents[(x, y)].intensity = self.pheromone_grid[x][y]
