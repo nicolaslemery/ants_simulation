@@ -1,0 +1,12 @@
+import copy
+import torch
+
+from ants.AntNet import AntNet
+
+POPULATION_SIZE = 20
+
+def create_population():
+    return [AntNet() for _ in range(POPULATION_SIZE)]
+
+population = create_population()
+print(population[0])
